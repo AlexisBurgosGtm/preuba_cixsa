@@ -331,62 +331,7 @@
         </div> <!-- END Page Settings -->
              
         <!-- -->
-        <div class="modal fade js-modal-settings modal-backdrop-transparent  modal-with-scroll" tabindex="-1" role="dialog" aria-hidden="true" id="modal_menu_principal">
-            <div class="modal-dialog modal-dialog-centered modal-xl">
-                <div class="modal-content">
-                    <div class="dropdown-header d-flex justify-content-center align-items-center w-100">
-                        <h4 class="m-0 text-center negrita text-naranja" id="">
-                            Opciones del Usuario
-                        </h4>
-                    </div>
-                    <div class="modal-body p-2">
-                        <div class="card card-rounded shadow p-2">
-                            <div class="card-body">
-                                <table class="table table-responsive table-bordered">
-                                    <thead class="bg-naranja text-white negrita">
-                                        <tr>
-                                            <td>Mantenimientos</td>
-                                            <td>Operaciones</td>
-                                            <td>Órdenes</td>
-                                            <td>Archivo</td>
-                                            <td>Inventarios</td>
-                                            <td>Parámetros</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="text-naranja hand border-naranja">
-                                        <tr>
-                                            <td>Clientes</td>
-                                            <td onclick="Navegar.pos()">Punto de Venta (POS)</td>
-                                            <td>Orden de Soporte</td>
-                                            <td>Documentos</td>
-                                            <td onclick="Navegar.mantenimientos_productos()">Productos y Precios</td>
-                                            <td>Configuraciones</td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                    </tbody>
-                               </table>
-                            </div>
-                        </div>
-                       
-                          
-                        
-                        
-                    </div>
-                    <div class="modal-footer text-center">
-                        <button class="btn btn-circle btn-xl btn-secondary hand shadow" data-dismiss="modal">
-                            <i class="fal fa-arrow-left"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-          
+      
    
       
 
@@ -397,9 +342,7 @@
        
 
         
-        <script src="./controllers/CustomerVars.js"></script>
-
-        <script src="./libs/funciones.js"></script>
+    <script src="./libs/funciones.js"></script>
         
         <script src="./libs/noty/noty.min.js"></script>
 
@@ -418,11 +361,13 @@
         <script src="./libs/jsstore/jsstore.worker.min.js"></script>
       
         <script src="./controllers/GlobalVars.js"></script>
+
+        <script src="./controllers/api.js"></script>
+
         <script src="./controllers/Navegar.js"></script>
 
 
-        <script src="./controllers/db.js"></script>
-       
+        
         
         
         <script src="./index.js"></script>

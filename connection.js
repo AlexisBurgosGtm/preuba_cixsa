@@ -1,9 +1,9 @@
 ﻿
 let config = {
-	user: 'DB_A6478C_autoventa_admin',
+	user: 'db_a6478c_cixsa_admin',
 	password: 'razors1805',
-	server: 'sql5094.site4now.net',
-	database: 'DB_A6478C_autoventa',
+	server: 'sql8004.site4now.net',
+	database: 'db_a6478c_cixsa',
 	pool: {	max: 100,	min: 0,	idleTimeoutMillis: 30000},
 	options: {
 		encrypt: false, // for azure
@@ -40,6 +40,37 @@ let execute = {
 		  res.send('error')   
 		  sql.close();
 		}
+	},
+	query_local : (sqlqry)=>{	
+		
+		return new Promise((resolve,reject)=>{
+
+			try {
+				const pool1 = new sql.ConnectionPool(config, err => {
+					new sql.Request(pool1)
+					.query(sqlqry, (err, result) => {
+						if(err){
+							reject();
+						}else{
+							resolve(result);
+						}					
+					})
+					sql.close();  
+				})
+				pool1.on('error', err => {
+					console.log('error sql = ' + err);
+					sql.close();
+					reject();
+				})
+				} catch (error) {
+					console.log(error);
+					reject();   
+				sql.close();
+				}
+				
+		})
+
+		
 	}
 }
 

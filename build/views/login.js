@@ -75,7 +75,7 @@ function addListeners(){
     //login
     document.getElementById('btnLogin').addEventListener('click',()=>{
 
-        let usuario = document.getElementById('cmbUsuario').ariaValueMax;
+        let usuario = document.getElementById('cmbUsuario').value;
         
         switch (usuario) {
             case 'ADMIN':
@@ -84,8 +84,6 @@ function addListeners(){
                 break;
             case 'USUARIO':
                 Navegar.inicio_usuario();
-                break;
-            default:
                 break;
         }
 
