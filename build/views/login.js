@@ -83,7 +83,9 @@ function addListeners(){
                 Navegar.inicio_admin();
                 break;
             case 'USUARIO':
-                Navegar.inicio_usuario();
+
+                //Navegar.inicio_usuario();
+                F.AvisoError('No dio tiempo de hacerse...');
                 break;
         }
 

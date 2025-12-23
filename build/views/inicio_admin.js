@@ -9,7 +9,7 @@ function getView(){
                         <div class="tab-pane fade show active" id="uno" role="tabpanel" aria-labelledby="receta-tab">
                             <h1 class="text-naranja negrita">Hola Administrador !!</h1>
                 
-                            ${view.inicio() + view.modal_foto() + view.modal_movimiento()}
+                            ${view.inicio() + view.modal_foto() + view.modal_movimiento() + view.modal_movimiento_mortalidad()}
                         </div>
                         <div class="tab-pane fade" id="dos" role="tabpanel" aria-labelledby="home-tab">
                             ${view.vista_nuevo()}
@@ -92,6 +92,7 @@ function getView(){
                                     <td>GALERA</td>
                                     <td>ST</td>
                                     <td>MOVER</td>
+                                    <td></td>
                                     <td>HISTORIAL</td>
                                     <td>FOTO</td>
                                     <td></td>
@@ -379,6 +380,52 @@ function getView(){
             </div>
             `
         },
+        modal_movimiento_mortalidad:()=>{
+            return `
+            <div class="modal fade" id="modal_mortalidad" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-right modal-lg" role="document">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <label class="modal-title h3">Mortalidad del Animal</label>
+                           
+                            <label class="modal-title h3 text-danger" id="lbMONombre"></label>
+                            
+                        </div>
+        
+                        <div class="modal-body p-4">
+
+                           
+                                     
+                                    <div class="form-group">
+                                        <label>Fecha</label>
+                                        <input type="date" class="form-control negrita text-danger" id="txtMOFecha">
+                                    </div>
+               
+                           
+                            <br>
+
+                            <div class="row">
+                                <div class="col-6">
+                                    <button class="btn btn-xl btn-circle btn-secondary hand shadow" data-dismiss="modal">
+                                        X
+                                    </button>
+                                </div>
+                                <div class="col-6">
+                                    <button class="btn btn-xl btn-circle btn-info hand shadow" id="btnMOGuardar">
+                                        <i class="fal fa-save"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                        
+                        </div>
+                                
+                    </div>
+                </div>
+            </div>
+            `
+        },
     }
 
     root.innerHTML = view.body();
@@ -609,6 +656,8 @@ function listeners_movimiento(){
         let tipo = document.getElementById('cmbRETipo').value;
         let fecha = F.devuelveFecha('txtREFecha');
         let peso = document.getElementById('txtREPeso').value || '0';
+        if(peso=='0'){F.AvisoError('Indique el peso del animal');return;};
+
         let id_granja = document.getElementById('cmbREGranjaDestino').value;
         let id_galera = document.getElementById('cmbREGaleraDestino').value;
 
@@ -755,11 +804,18 @@ function tbl_animales(){
                 <td>${r.GALERA}</td>
                 <td class="negrita ${classSt}">${r.ST}</td>
                 <td>
-                    <button class="btn btn-md btn-outline-danger hand shadow col-12"
+                    <button class="btn btn-md btn-outline-warning hand shadow col-12"
                     onclick="movimiento_animal('${r.CODIGO}','${r.NOMBRE}','${r.GRANJA}','${r.GALERA}')">
                         <i class="fal fa-arrows-alt"></i> &nbsp Reubicar Animal
                     </button>
                 </td>
+                <td>
+                    <button class="btn btn-md btn-outline-danger hand shadow col-12"
+                    onclick="mortalidad_animal('${r.CODIGO}','${r.NOMBRE}')">
+                        <i class="fal fa-danger"></i> &nbsp Registra Mortalidad
+                    </button>
+                </td>
+                
              
                 <td>
                     <button class="btn btn-circle btn-md hand shadow btn-warning"
@@ -878,6 +934,15 @@ function movimiento_animal(idanimal,nombre,granja,galera){
 
 
 }
+function mortalidad_animal(idanimal,nombre){
+
+
+    $("#modal_mortalidad").modal('show');
+
+
+    document.getElementById('txtMOFecha').value = F.getFecha();
+
+};
 
 
 
